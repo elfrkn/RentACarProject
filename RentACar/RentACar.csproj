@@ -31,8 +31,6 @@
 
   <ItemGroup>
     <Folder Include="CQRS\Commands\" />
-    <Folder Include="CQRS\Handlers\" />
-    <Folder Include="CQRS\Results\" />
     <Folder Include="CQRS\Queries\" />
   </ItemGroup>
 
