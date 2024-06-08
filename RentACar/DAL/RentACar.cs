@@ -5,7 +5,6 @@ namespace RentACar.DAL
     public class RentACar
     {
         public  int RentACarID { get; set; }
-
         public int CarBrand { get; set; }
         public  int CarModel { get; set; }
         public string? BodyType { get; set; }
@@ -21,6 +20,9 @@ namespace RentACar.DAL
 
         [Column(TypeName = "Date")]
         public  DateTime DropOffDate { get; set; }
+
+        public  int LacationID { get; set; }
+        public  Location Location { get; set; }
 
     }
 }

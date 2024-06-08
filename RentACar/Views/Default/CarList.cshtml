@@ -114,19 +114,45 @@
                                         </div>
                                     </div>
                                     <div>
+
+                                        <p> <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal1-@item.CarID">Detaylar</a>  <a href="#" class="btn btn-primary btn-sm">Aracı Kirala</a> </p>
                                         
-                                        <p><a href="#" class="btn btn-primary btn-sm">Detaylar</a> <a href="#" class="btn btn-primary btn-sm">Aracı Kirala</a> </p>
+                                      
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                    }
-                    
+                        <div class="modal" id="Modal1-@item.CarID" tabindex="-1">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-bold"><b>@item.CarBrand @item.CarModel</b></h5><br />
+                                    </div>
+                                    <div class="modal-body">
 
-                    
-
+                                        <img src="@item.ImageUrl"  style="height:370px;" />
+                                        <div class="card">
+                                            <div class="card-header"><b>Araç Özellikleri</b></div>
+                                            <div class="card-body p-3">
+                                                <span class="caption"><b>Araç Km:</b> @item.CarKM</span><br />
+                                                <span class="caption"><b>Vites Tipi:</b> @item.CarGearType</span><br />
+                                                <span class="caption"><b>Benzin Tipi:</b> @item.FuelType</span><br />
+                                                <span class="caption"><b>Motor Gücü:</b> @item.MotorPower</span><br />
+                                                <span class="caption"><b>Kasa Tipi:</b> @item.BodyType</span><br />
+                                                <span class="caption"><b>Günlük Fiyat:</b> @item.Price</span><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
                 </div>
+              
             </div>
         </div>
         <footer class="site-footer">

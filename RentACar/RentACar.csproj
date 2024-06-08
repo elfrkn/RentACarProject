@@ -31,7 +31,9 @@
 
   <ItemGroup>
     <Folder Include="CQRS\Commands\" />
-    <Folder Include="CQRS\Queries\" />
+    <Folder Include="Mediator\Commands\" />
+    <Folder Include="Mediator\Handlers\" />
+    <Folder Include="Mediator\Queries\" />
   </ItemGroup>
 
 </Project>

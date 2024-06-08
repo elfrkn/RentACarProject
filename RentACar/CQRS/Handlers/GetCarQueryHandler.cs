@@ -23,7 +23,10 @@ namespace RentACar.CQRS.Handlers
                 FuelType = x.FuelType,
                 MotorPower = x.MotorPower,
                 ImageUrl = x.ImageUrl,
-                Price = x.Price
+                Price = x.Price,
+                BodyType =x.BodyType,
+                CarGearType =x.CarGearType
+               
             }).ToList();
             return values;
         }

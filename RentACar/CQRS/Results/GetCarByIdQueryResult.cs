@@ -1,6 +1,6 @@
 ﻿namespace RentACar.CQRS.Results
 {
-    public class GetCarQueryResult
+    public class GetCarByIdQueryResult
     {
         public int CarID { get; set; }
         public string? CarBrand { get; set; }
