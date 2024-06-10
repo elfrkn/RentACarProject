@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACar.DAL;
 
@@ -11,9 +12,10 @@ using RentACar.DAL;
 namespace RentACar.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240609111154_new2")]
+    partial class new2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,7 +137,7 @@ namespace RentACar.Migrations
             modelBuilder.Entity("RentACar.DAL.RentACar", b =>
                 {
                     b.HasOne("RentACar.DAL.Car", "Car")
-                        .WithMany("RentACars")
+                        .WithMany()
                         .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -157,11 +159,6 @@ namespace RentACar.Migrations
                     b.Navigation("DestinationLocation");
 
                     b.Navigation("ReceivingLocation");
-                });
-
-            modelBuilder.Entity("RentACar.DAL.Car", b =>
-                {
-                    b.Navigation("RentACars");
                 });
 
             modelBuilder.Entity("RentACar.DAL.DestinationLocation", b =>

@@ -12,5 +12,6 @@
         public  string? BodyType { get; set; }
         public  string ImageUrl { get; set; }
         public  string Price { get; set; }
+        public List<RentACar> RentACars { get; set; }
     }
 }

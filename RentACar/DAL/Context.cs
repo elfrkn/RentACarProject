@@ -11,6 +11,7 @@ namespace RentACar.DAL
 
         public  DbSet<Car> Cars { get; set; }
         public  DbSet<RentACar> RentACars { get; set; }
-        public  DbSet<Location> Locations { get; set; }
+        public  DbSet<ReceivingLocation> ReceivingLocations { get; set; }
+        public  DbSet<DestinationLocation > DestinationLocations { get; set; }
     }
 }

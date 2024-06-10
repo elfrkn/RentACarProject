@@ -1,0 +1,58 @@
+﻿@model CreateCarCommand
+@{
+    ViewData["Title"] = "CreateCar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Araba Ekle</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tbody>
+                        <form method="post">
+                            <div class="container">
+                                <br /><br />
+                             
+                                <label>Araç Marka</label>
+                                <input type="text" asp-for="CarBrand" class="form-control" />
+                                <br />
+                                <label>Araç Model</label>
+                                <input type="text" asp-for="CarModel" class="form-control" />
+                                <br />
+                                <label>Araç KM</label>
+                                <input type="text" asp-for="CarKM" class="form-control" />
+                                <br />
+                                <label>Araç Vites Tipi</label>
+                                <input type="text" asp-for="CarGearType" class="form-control" />
+                                <br />
+                                <label>Araç Yakıt Türü</label>
+                                <input type="text" asp-for="FuelType" class="form-control" />
+                                <br />
+                                <label>Araç Motor Gücü</label>
+                                <input type="text" asp-for="MotorPower" class="form-control" />
+                                <br />
+                                <label>Araç Kasa Tipi</label>
+                                <input type="text" asp-for="BodyType" class="form-control" />
+                                <br />
+                                <label>Araç Resim Url</label>
+                                <input type="text" asp-for="ImageUrl" class="form-control" />
+                                <br />
+                                <label>Araç Günlük Fiyat</label>
+                                <input type="text" asp-for="Price" class="form-control" />
+                                <br />
+
+                                <button type="submit" class="btn btn-primary">Aracı Ekle</button>
+                                <br /><br />
+                            </div>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

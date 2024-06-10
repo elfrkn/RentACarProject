@@ -1,4 +1,4 @@
-﻿@model SearchCarViewModel
+﻿@model List<SearchCarQueryResult>
 @{
     Layout = null;
 }
@@ -63,7 +63,7 @@
                         <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav ml-auto ">
                                 <li class="active"><a href="index.html" class="nav-link">Anasayfa</a></li>
-                                <li><a href="/Default/CarList/" class="nav-link">Araç Listesi</a></li>
+                                <li><a href="listing.html" class="nav-link">Araç Listesi</a></li>
                                 <li><a href="testimonials.html" class="nav-link">Referanslar</a></li>
                                 <li><a href="about.html" class="nav-link">Hakkımızda</a></li>
                                 <li><a href="contact.html" class="nav-link">İletişim</a></li>
@@ -74,155 +74,59 @@
 
                 </div>
             </div>
-
         </header>
-
-
-        <div class="hero" style="background-image: url('/carrentals-master/images/feature_02.png');">
-
+        <br /><br />
+        <div class="site-section bg-light">
             <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <h2 class="section-heading"><strong></strong></h2>
+                        <p class="mb-5"></p>
+                    </div>
+                </div>
 
-                        <div class="row mb-5">
-                            <div class="col-lg-7 intro">
-                                <h1>
-                                    <strong>Araç kiralamak</strong>
-                                     parmaklarınızın ucunda...
-                                </h1>
-                            </div>
-                        </div>
 
-                        <form class="trip-form" method="post" asp-action="SearchCar" asp-controller="Default">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6 col-lg-4 mb-4">
 
-                            <div class="row align-items-center">
-
-                                <div class="mb-2 mb-md-0 col-md-3">
-
-                                    @Html.DropDownListFor(x => x.ReceivingLocationID, (List<SelectListItem>)ViewBag.ReceivingLocation, "Alış Lokasyon", new { @class = "custom-select form-control" })
-                                  
+                            <div class="listing d-block  align-items-stretch">
+                                <div class="listing-img h-100 mr-4">
+                                    <img src="@item.ImageUrl" alt="Image" class="img-fluid">
                                 </div>
-                                <div class="mb-2 mb-md-0 col-md-3">
+                                <div class="listing-contents h-100">
+                                    <h3>@item.CarBrand @item.CarModel</h3>
+                                   
+                                    <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                                        <div class="listing-feature pr-4">
+                                            <span class="caption">Kasa Tipi:</span>
+                                            <span class="number">@item.BodyType</span>
+                                        </div>
+                                        <div class="listing-feature pr-4">
+                                            <span class="caption">Benzin Türü:</span>
+                                            <span class="number">@item.FuelType</span>
+                                        </div>
+                                        <div class="listing-feature pr-4">
+                                            <span class="caption">Motor Gücü:</span>
+                                            <span class="number">@item.MotorPower</span>
+                                        </div>
+                                    </div>
+                                    <div>
 
-                                    @Html.DropDownListFor(x => x.DestinationLocationID, (List<SelectListItem>)ViewBag.DestinationLocation, "İade Lokasyon", new { @class = "custom-select form-control" })
+                                        <p> <a href="#" class="btn btn-primary btn-sm">Detaylar</a>  <a href="#" class="btn btn-primary btn-sm">Aracı Kirala</a> </p>
 
-                                </div>
-                                <div class="mb-2 mb-md-0 col-md-3">
-                                    <div class="form-control-wrap">
-                                        <input type="text" id="cf-3" placeholder="Alış Tarihi" asp-for="PickUpDate" class="form-control datepicker px-3">
-                                        <span class="icon icon-date_range"></span>
 
                                     </div>
                                 </div>
-                                <div class="mb-2 mb-md-0 col-md-3">
-                                    <div class="form-control-wrap">
-                                        <input type="text" id="cf-4" placeholder="Teslim Tarihi"  asp-for="DropOffDate"    class="form-control datepicker px-3">
-                                        <span class="icon icon-date_range"></span>
-                                    </div>
-                                </div>
-                                <br /><br /><br />
-                                <div class="container" >
-                                    <button type="submit"  class="btn btn-primary btn-block py-3">Araç Ara</button>
-                                </div>
-                            </div>
 
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="site-section">
-            <div class="container">
-                <h2 class="section-heading">
-                    <strong>
-                        Nasıl çalışır?
-                    </strong>
-                </h2>
-            
-
-                <div class="row mb-5">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="step">
-                            <span>1</span>
-                            <div class="step-inner">
-                                <span class="number text-primary">01.</span>
-                                <h3>
-                                    Bir araba seçin
-                                </h3>
-                               
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="step">
-                            <span>2</span>
-                            <div class="step-inner">
-                                <span class="number text-primary">02.</span>
-                                <h3>
-                                    Formu doldurun
-                                </h3>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="step">
-                            <span>3</span>
-                            <div class="step-inner">
-                                <span class="number text-primary">03.</span>
-                                <h3>
-                                    Ödemenizi Yapın
-                                </h3>
-                                
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
+
             </div>
         </div>
-
-        <div class="site-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 text-center order-lg-2">
-                        <div class="img-wrap-1 mb-5">
-                            <img src="~/carrentals-master/images/feature_01.png" alt="Image" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 ml-auto order-lg-1">
-                        <h3 class="mb-4 section-heading"><strong>Araç kiralamak için kampanyalarımızdan kolaylıkla yararlanabilirsiniz.</strong></h3>
-                        
-                        <p><a href="#" class="btn btn-primary">Detaylar >></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        
-                                 
-        <div class="site-section bg-primary py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-4 mb-md-0">
-                        <h2 class="mb-0 text-white">
-                            Ne için bekliyorsun?
-                        </h2>
-                        <p class="mb-0 opa-7">Hemen bir araç kirala...</p>
-                    </div>
-                    <div class="col-lg-5 text-md-right">
-                        <a href="#" class="btn btn-primary btn-white">Şimdi Kirala</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <footer class="site-footer">
             <div class="container">
                 <div class="row">
@@ -248,7 +152,7 @@
                                     <li><a href="#">İletişim</a></li>
                                 </ul>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -286,5 +190,3 @@
 </body>
 
 </html>
-
-

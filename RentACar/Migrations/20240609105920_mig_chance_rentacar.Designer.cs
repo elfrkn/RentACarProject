@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACar.DAL;
 
@@ -11,9 +12,10 @@ using RentACar.DAL;
 namespace RentACar.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240609105920_mig_chance_rentacar")]
+    partial class mig_chance_rentacar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,38 +66,21 @@ namespace RentACar.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("RentACar.DAL.DestinationLocation", b =>
+            modelBuilder.Entity("RentACar.DAL.Location", b =>
                 {
-                    b.Property<int>("DestinationLocationID")
+                    b.Property<int>("LocationID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationLocationID"), 1L, 1);
-
-                    b.Property<string>("DestinationLocationName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DestinationLocationID");
-
-                    b.ToTable("DestinationLocations");
-                });
-
-            modelBuilder.Entity("RentACar.DAL.ReceivingLocation", b =>
-                {
-                    b.Property<int>("ReceivingLocationID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReceivingLocationID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationID"), 1L, 1);
 
                     b.Property<string>("LocationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ReceivingLocationID");
+                    b.HasKey("LocationID");
 
-                    b.ToTable("ReceivingLocations");
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("RentACar.DAL.RentACar", b =>
@@ -109,25 +94,31 @@ namespace RentACar.Migrations
                     b.Property<int>("CarID")
                         .HasColumnType("int");
 
-                    b.Property<int>("DestinationLocationID")
-                        .HasColumnType("int");
+                    b.Property<string>("DestinationLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DropOffDate")
                         .HasColumnType("Date");
 
+                    b.Property<int>("LacationID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LocationID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("PckUpDate")
                         .HasColumnType("Date");
 
-                    b.Property<int>("ReceivingLocationID")
-                        .HasColumnType("int");
+                    b.Property<string>("ReceivingLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RentACarID");
 
                     b.HasIndex("CarID");
 
-                    b.HasIndex("DestinationLocationID");
-
-                    b.HasIndex("ReceivingLocationID");
+                    b.HasIndex("LocationID");
 
                     b.ToTable("RentACars");
                 });
@@ -135,41 +126,23 @@ namespace RentACar.Migrations
             modelBuilder.Entity("RentACar.DAL.RentACar", b =>
                 {
                     b.HasOne("RentACar.DAL.Car", "Car")
-                        .WithMany("RentACars")
+                        .WithMany()
                         .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RentACar.DAL.DestinationLocation", "DestinationLocation")
+                    b.HasOne("RentACar.DAL.Location", "Location")
                         .WithMany("RentACars")
-                        .HasForeignKey("DestinationLocationID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RentACar.DAL.ReceivingLocation", "ReceivingLocation")
-                        .WithMany("RentACars")
-                        .HasForeignKey("ReceivingLocationID")
+                        .HasForeignKey("LocationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Car");
 
-                    b.Navigation("DestinationLocation");
-
-                    b.Navigation("ReceivingLocation");
+                    b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("RentACar.DAL.Car", b =>
-                {
-                    b.Navigation("RentACars");
-                });
-
-            modelBuilder.Entity("RentACar.DAL.DestinationLocation", b =>
-                {
-                    b.Navigation("RentACars");
-                });
-
-            modelBuilder.Entity("RentACar.DAL.ReceivingLocation", b =>
+            modelBuilder.Entity("RentACar.DAL.Location", b =>
                 {
                     b.Navigation("RentACars");
                 });
